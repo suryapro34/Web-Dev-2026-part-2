@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     $product_abilities = ['insert_product', 'update_product', 'delete_product'];
     foreach ($product_abilities as $ability) {
         Gate::define($ability, function ($user) {
-            return $user->roles()->where('role', 'admin')->exists();
+            return $user->roles()->whereIn('role', ['admin', 'owner'])->exists();
         });
     }
 }
