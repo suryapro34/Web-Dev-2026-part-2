@@ -2,7 +2,9 @@
 
 @section('content')
     <h2>This is Store Page</h2>
-    <a href="{{ route('products_insert_from') }}" class="btn btn-primary">Insert New Product</a>
+     @can('insert_product')  
+        <a href="{{ route('products_insert_from') }}" class="btn btn-primary">Insert New Product</a>
+    @endcan
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach ($products as $product)
             <div class="col">
@@ -13,8 +15,12 @@
                         <p class="card-text"><i>{{ $product->product_category->name }}</i></p>
                         <p class="card-text">Rp {{ number_format($product->price, 2) }}</p>
                         <p class="card-text">{{ $product->details }}</p>
-                        <a href="{{ route('products_edit_from', ['product_id' => $product->id]) }}" class="btn btn-sm btn-warning">Edit Product</a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $product->id }}">Delete</button>
+                         @can('update_product')  
+                            <a href="{{ route('products_edit_from', ['product_id' => $product->id]) }}" class="btn btn-sm btn-warning">Edit Product</a>
+                        @endcan
+                        @can('delete_product')  
+                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $product->id }}">Delete</button>
+                        @endcan
                     </div>
                     <div class="modal fade" id="deleteModal{{ $product->id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
