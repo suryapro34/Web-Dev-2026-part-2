@@ -23,6 +23,11 @@
                 @guest
                     <a href="{{ route('login_show') }}" class="btn btn-light btn-sm ms-2 px-4 fw-bold rounded-pill text-primary shadow-sm hover-shadow">Login</a>
                 @else
+                     @auth
+                         <a href="{{ route('view_cart') }}" class="text-white me-3 fs-5">
+                         <i class="fas fa-shopping-cart"></i>
+                         </a>
+                      @endauth
                     <div class="position-relative ms-2">
                         <button class="btn btn-light btn-sm px-4 fw-bold rounded-pill text-primary d-flex align-items-center shadow-sm" type="button" id="customUserDropdown">
                             <i class="fas fa-user-circle me-2 fs-5"></i>

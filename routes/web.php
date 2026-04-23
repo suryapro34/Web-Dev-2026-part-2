@@ -46,3 +46,8 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('add-to-cart/{product_id}', [StoreController::class, 'add_to_cart'])->name('add_to_cart');
+Route::get('/view-cart', [StoreController::class, 'view_cart'])->name('view_cart');
+Route::patch('/update-cart/{product_id}', [StoreController::class, 'update_cart'])->name('update_cart');
+Route::delete('/remove-from-cart/{product_id}', [StoreController::class, 'remove_from_cart'])->name('remove_from_cart');
+Route::post('/checkout', [StoreController::class, 'checkout'])->name('checkout');
