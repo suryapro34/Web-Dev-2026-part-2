@@ -27,6 +27,9 @@
                          <a href="{{ route('view_cart') }}" class="text-white me-3 fs-5">
                          <i class="fas fa-shopping-cart"></i>
                          </a>
+                         <li class="nav-item">
+                             <a class="nav-link {{ request()->routeIs('orders') ? 'active' : '' }}" href="{{ route('orders') }}">My Orders</a>
+                         </li>
                       @endauth
                     <div class="position-relative ms-2">
                         <button class="btn btn-light btn-sm px-4 fw-bold rounded-pill text-primary d-flex align-items-center shadow-sm" type="button" id="customUserDropdown">
